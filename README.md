@@ -2,7 +2,11 @@
 
 [![Install in Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=word&config=eyJjb21tYW5kIjoidXZ4IiwiYXJncyI6WyJ3b3JkLW1jcC1saXZlIl19)
 
-# word-mcp-live
+# word-mcp-zky
+
+word的mcp
+
+基于 [word-mcp-live](https://github.com/ykarapazar/word-mcp-live) v1.6.22 的个人开发仓库。
 
 **The only MCP server that edits Word documents while they're open**
 
