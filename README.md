@@ -218,6 +218,29 @@ In the desktop app: Settings → MCP servers → Add server. On Windows, run Cod
 
 </details>
 
+### 在 Codex 中测试本仓库的改动
+
+上面的 `uvx word-mcp-live` 示例启动的是 PyPI 上的上游版本。要测试本仓库的代码，先克隆你的开发仓库（已有本地副本可跳过）：
+
+```bash
+git clone https://github.com/zky-em/word-mcp-zky.git
+```
+
+在 Codex 的 `config.toml` 中添加下面的配置。如果已有 `[mcp_servers.word]`，用下面的内容替换原配置，不要重复添加同名配置段。把示例路径改成包含 `pyproject.toml` 的本地仓库绝对路径；macOS/Linux 可用 `/Users/you/src/word-mcp-zky` 或对应的实际路径。
+
+```toml
+[mcp_servers.word]
+command = "uv"
+args = ["run", "--project", 'C:\src\word-mcp-zky', "--no-dev", "word-mcp-live"]
+startup_timeout_sec = 120
+tool_timeout_sec = 120
+
+[mcp_servers.word.env]
+MCP_AUTHOR = "Your Name"
+```
+
+保存配置后重启 Codex。首次启动时，`uv` 会准备项目环境，并以可编辑模式安装本仓库；修改 Python 代码后，重启 Codex 即可加载改动。要测试正在打开的 Word 文档，请在安装了桌面版 Word 的 Windows 或 macOS 上运行；Windows 上请使用原生环境，不要在 WSL 中运行实时编辑工具。
+
 <details>
 <summary><b>Docker</b></summary>
 
